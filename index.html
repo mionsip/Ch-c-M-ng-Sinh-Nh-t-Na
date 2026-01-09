@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chúc mừng sinh nhật Na 🎉</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4d6d;
+        }
+
+        input, textarea {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 70px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 12px;
+            padding: 12px;
+            border: none;
+            border-radius: 20px;
+            background: #ff4d6d;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e63e5c;
+        }
+
+        .board {
+            margin-top: 20px;
+        }
+
+        .item {
+            background: #fff0f3;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+
+        .msg {
+            margin-top: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎉 Chúc mừng sinh nhật Na 🎂</h1>
+
+    <input id="ten" placeholder="Tên của bạn là gì?" />
+    <textarea id="loiChuc" placeholder="Viết lời chúc cho Na 💖"></textarea>
+
+    <button onclick="guiChuc()">🎁 Gửi lời chúc</button>
+
+    <div class="board" id="bangChuc">
+        <!-- Lời chúc sẽ hiện ở đây -->
+    </div>
+</div>
+
+<script>
+    function guiChuc() {
+        const ten = document.getElementById("ten").value.trim();
+        const loiChuc = document.getElementById("loiChuc").value.trim();
+        const bang = document.getElementById("bangChuc");
+
+        if (ten === "" || loiChuc === "") {
+            alert("Nhập đầy đủ tên và lời chúc nha 😅");
+            return;
+        }
+
+        const item = document.createElement("div");
+        item.className = "item";
+
+        item.innerHTML = `
+            <div class="name">💌 ${ten}</div>
+            <div class="msg">${loiChuc}</div>
+        `;
+
+        bang.prepend(item);
+
+        document.getElementById("ten").value = "";
+        document.getElementById("loiChuc").value = "";
+    }
+</script>
+
+</body>
+</html>
