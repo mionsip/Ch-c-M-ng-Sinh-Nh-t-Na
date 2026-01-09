@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chúc mừng sinh nhật Na 🎂</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
+      text-align: center;
+      padding: 40px;
+    }
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: auto;
+    }
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #ff69b4;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .link {
+      margin-top: 15px;
+      word-break: break-all;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box" id="formBox">
+  <h2>🎉 Chúc mừng sinh nhật Na 🎉</h2>
+  <input id="name" placeholder="Nhập tên của bạn" />
+  <textarea id="wish" placeholder="Nhập lời chúc"></textarea>
+  <br />
+  <button onclick="taoLink()">Tạo lời chúc</button>
+  <div class="link" id="result"></div>
+</div>
+
+<div class="box" id="viewBox" style="display:none;">
+  <h2>🎂 Chúc mừng sinh nhật Na 🎂</h2>
+  <p id="content"></p>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const ten = params.get("ten");
+  const loi = params.get("loi");
+
+  if (ten && loi) {
+    document.getElementById("formBox").style.display = "none";
+    document.getElementById("viewBox").style.display = "block";
+    document.getElementById("content").innerHTML =
+      `💌 <b>${decodeURIComponent(ten)}</b> chúc rằng:<br><br>“${decodeURIComponent(loi)}”`;
+  }
+
+  function taoLink() {
+    const ten = document.getElementById("name").value;
+    const loi = document.getElementById("wish").value;
+    if (!ten || !loi) {
+      alert("Nhập đầy đủ nha 😅");
+      return;
+    }
+    const link =
+      window.location.origin +
+      window.location.pathname +
+      `?ten=${encodeURIComponent(ten)}&loi=${encodeURIComponent(loi)}`;
+
+    document.getElementById("result").innerHTML =
+      `Copy link này gửi đi nè 👇<br><a href="${link}">${link}</a>`;
+  }
+</script>
+
+</body>
+</html>
